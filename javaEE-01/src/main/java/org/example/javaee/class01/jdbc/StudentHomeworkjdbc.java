@@ -40,7 +40,7 @@ public class StudentHomeworkjdbc {
             e.printStackTrace();
         }
 
-        try(Connection connection = DriverManager.getConnection(url,"root", "root")){
+        try(Connection connection = DatabasePool.getHikariDataSource().getConnection()){
             try( PreparedStatement ps = connection.prepareStatement(sqlString)){
                 ps.setLong(1,sh.getStudentId());
                 ps.setLong(2,sh.getHomeworkId());
@@ -77,7 +77,7 @@ public class StudentHomeworkjdbc {
         //创建一个列表储存结果
         List<StudentHomework> list = new ArrayList<StudentHomework>();
         //连接mysql获取数据,获取完毕以后关闭mysql连接
-        try(Connection connection = DriverManager.getConnection(url,"root", "root")){
+        try(Connection connection = DatabasePool.getHikariDataSource().getConnection()){
             try( Statement statement = connection.createStatement()){
                 try(ResultSet resultSet = statement.executeQuery(sqlString)){
                     while(resultSet.next()){

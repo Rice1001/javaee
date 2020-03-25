@@ -1,5 +1,5 @@
-<%@ page import="com.javaee.code.model.Homework" %>
-<%@ page import="com.javaee.code.jdbc.Homeworkjdbc" %>
+<%@ page import="org.example.javaee.class01.model.Homework" %>
+<%@ page import="org.example.javaee.class01.jdbc.Homeworkjdbc" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Rice

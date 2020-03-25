@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class Homeworkjdbc {
 
-    private static  String url = "jdbc:mysql://127.0.0.1:3306/school";
     private static String driveName = "com.mysql.cj.jdbc.Driver";
 
     /**
@@ -29,7 +28,7 @@ public class Homeworkjdbc {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try(Connection connection = DriverManager.getConnection(url,"root","root")){
+        try(Connection connection = DatabasePool.getHikariDataSource().getConnection()){
             try(Statement statement = connection.createStatement()){
                 try(ResultSet rs = statement.executeQuery(sqlString)){
                    while(rs.next()){
@@ -64,7 +63,7 @@ public class Homeworkjdbc {
             e.printStackTrace();
         }
 
-        try(Connection connection = DriverManager.getConnection(url,"root","root")){
+        try(Connection connection = DatabasePool.getHikariDataSource().getConnection()){
             try(PreparedStatement ps = connection.prepareStatement(sqlString)){
                 ps.setLong(1,hm.getId());
                 ps.setString(2,hm.getTitle());

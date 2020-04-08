@@ -13,6 +13,7 @@
         <module>javaEE-02</module>
         <module>core</module>
         <module>db</module>
+        <module>javaEE-SpringMVC</module>
     </modules>
 
     <dependencyManagement>
@@ -38,6 +39,15 @@
                 <artifactId>HikariCP</artifactId>
                 <version>3.4.2</version>
             </dependency>
+
+            <!--添加spring mvc依赖-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>5.2.5.RELEASE</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

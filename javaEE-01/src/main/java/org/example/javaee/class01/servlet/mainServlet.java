@@ -12,7 +12,7 @@ import java.io.IOException;
  * @version 1.0
  * @date 2020/3/12 21:31
  */
-@WebServlet("/main")
+@WebServlet("/main") 
 public class mainServlet extends HttpServlet {
 
     @Override

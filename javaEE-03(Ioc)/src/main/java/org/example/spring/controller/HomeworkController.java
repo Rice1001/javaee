@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * @author rice
  * @version 1.0
@@ -19,22 +21,32 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/homework/")
 public class HomeworkController {
 
-    @Autowired
-    private Homework hm;
 
     @Autowired
     Homeworkjdbc homeworkjdbc;
 
-    @PostMapping("add")
-    public void addHomework(@RequestParam("id") Long hmId,
+    @RequestMapping(value = "add")
+    public ModelAndView addHomework(@RequestParam("id") Long hmId,
                             @RequestParam("title") String hmTitle,
                             @RequestParam("content") String hmContent){
+        Homework hm = new Homework();
         hm.setId(hmId);
         hm.setContent(hmContent);
         hm.setTitle(hmTitle);
-        homeworkjdbc.addHomework(hm);
+        ModelAndView mav = new ModelAndView("/success.jsp");
+        if(homeworkjdbc.addHomework(hm))
+            return mav;
+        else{
+            mav.setViewName("/fail.jsp");
+            return mav;
+        }
 
     }
 
-
+    @RequestMapping("display")
+    public ModelAndView displayAllStudentHomework(){
+        ModelAndView modelAndView = new ModelAndView("/submitHomework.jsp");
+        modelAndView.addObject("homeworkList",homeworkjdbc.selectAll());
+        return modelAndView;
+    }
 }

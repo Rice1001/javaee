@@ -4,10 +4,7 @@ import org.example.spring.jdbc.StudentHomeworkjdbc;
 import org.example.spring.model.StudentHomework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -21,25 +18,35 @@ import org.springframework.web.servlet.ModelAndView;
 public class StudentHomeworkController {
 
     @Autowired
-    private StudentHomework studentHomework;
-
-    @Autowired
     private StudentHomeworkjdbc studentHomeworkjdbc;
-    @PostMapping("submit")
-    public void addStudentHomework(@RequestParam("student_id") Long studentId,
+    @RequestMapping("submit")
+    public ModelAndView addStudentHomework(@RequestParam("student_id") Long studentId,
                                    @RequestParam("homework_id") Long homeworkId,
                                    @RequestParam("homework_title") String homeworkTitle,
                                    @RequestParam("homework_content") String homeworkContent){
 
+        StudentHomework studentHomework = new StudentHomework();
         studentHomework.setId(studentId);
         studentHomework.setHomeworkId(homeworkId);
         studentHomework.setHomeworkContent(homeworkContent);
-        studentHomeworkjdbc.addStudentHomework(studentHomework);
+        ModelAndView mav = new ModelAndView("/success.jsp");
+        if(studentHomeworkjdbc.addStudentHomework(studentHomework))
+            return mav;
+        else{
+            mav.setViewName("/fail.jsp");
+            return mav;
+        }
+
     }
 
-    @GetMapping("display")
+    /**
+     *
+     *
+     * @return  modelAndView
+     */
+    @RequestMapping("display")
     public ModelAndView displayAllStudentHomework(){
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("/index.jsp");
         modelAndView.addObject("studentHomeworkList",studentHomeworkjdbc.selectAll());
         return modelAndView;
     }

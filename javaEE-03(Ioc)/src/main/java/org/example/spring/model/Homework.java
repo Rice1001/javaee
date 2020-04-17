@@ -10,9 +10,6 @@ import java.util.Date;
  * @version 1.0
  * @date 2020/3/13 19:33
  */
-@Configuration
-@Scope("prototype")
-
 public class Homework {
 
     private long id;

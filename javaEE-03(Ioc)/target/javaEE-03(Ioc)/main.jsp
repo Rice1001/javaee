@@ -24,11 +24,11 @@
         <button >教师-查看作业</button>
     </a>
     </br>
-    <a href="/api/addTo">
+    <a href="/api/add">
         <button >教师-添加作业</button>
     </a>
     </br>
-    <a href="/api/addTo">
+    <a href="/api/add">
         <button >教师-添加学生</button>
     </a>
     </br>

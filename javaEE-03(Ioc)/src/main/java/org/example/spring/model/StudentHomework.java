@@ -11,9 +11,6 @@ import java.util.Date;
  * @date 2020/3/11 16:59
  */
 
-@Configuration
-@Scope("prototype")
-
 public class StudentHomework {
 
     private long id;

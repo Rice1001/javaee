@@ -1,8 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.spring.model.StudentHomework" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="studentHomeworkjdbc" class="org.example.spring.jdbc.StudentHomeworkjdbc"/>
+<%@ page import="org.example.spring.jdbc.StudentHomeworkjdbc" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -17,6 +15,7 @@
     <title>my Homework</title>
   </head>
   <body>
+
     <table align="center" width = "960" border="1" bgcolor="#f0f8ff" cellpadding="1" cellspacing="1">
       <tr align="center" height = "35" bgcolor="#ffe4c4">
         <td>ID</td>
@@ -28,7 +27,7 @@
       </tr>
       <%
 
-        List<StudentHomework> list = (List<StudentHomework>)request.getAttribute("studentHomeworkList");
+        List<StudentHomework> list = (List<StudentHomework>) request.getAttribute("studentHomeworkList");
         if(list == null){
             out.println("none data");
         }else{

@@ -1,9 +1,8 @@
 package org.example.spring.jdbc;
 
 import org.example.spring.model.StudentHomework;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,14 +16,6 @@ import java.util.List;
 
 @Configuration
 public class StudentHomeworkjdbc {
-
-
-    private StudentHomework sh;
-
-    @Autowired
-    public StudentHomeworkjdbc(StudentHomework sh){
-        this.sh = sh;
-    }
 
 
     /**
@@ -88,6 +79,7 @@ public class StudentHomeworkjdbc {
             try( Statement statement = connection.createStatement()){
                 try(ResultSet resultSet = statement.executeQuery(sqlString)){
                     while(resultSet.next()){
+                        StudentHomework sh = new StudentHomework();
                         sh.setId(resultSet.getLong("id"));
                         sh.setHomeworkId(resultSet.getLong("homework_id"));
                         sh.setStudentId(resultSet.getLong("student_id"));

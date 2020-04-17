@@ -13,7 +13,7 @@
 <body>
     <div>
         <h1 align="center">学生作业管理系统</h1>
-        <form method="post" action="/api//student/add">
+        <form method="post" action="/api/student/add">
             <fieldset>
                 <legend> 添加学生</legend>
                 <br>
@@ -26,7 +26,7 @@
         </form>
         <br>
         <br>
-        <form method="post" action="/api//homework/add">
+        <form method="post" action="/api/homework/add">
             <fieldset>
                 <legend> 添加作业</legend>
                 <br>

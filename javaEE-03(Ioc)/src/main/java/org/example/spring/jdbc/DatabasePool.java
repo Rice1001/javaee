@@ -19,12 +19,12 @@ public class DatabasePool {
 
         synchronized (DatabasePool.class){
             if(null == hikariDataSource){
-                String jdbcurl = "jdbc:mysql://127.0.0.1:3306/school?useUnicode=true&characterEncoding=utf8&useSSL=false";
+                String jdbcUrl = "jdbc:mysql://127.0.0.1:3306/school?useUnicode=true&characterEncoding=utf8&useSSL=false";
                 String driveName = "com.mysql.cj.jdbc.Driver";
                 HikariConfig hikariConfig = new HikariConfig();
                 hikariConfig.setUsername("root");
                 hikariConfig.setPassword("root");
-                hikariConfig.setJdbcUrl(jdbcurl);
+                hikariConfig.setJdbcUrl(jdbcUrl);
                 hikariConfig.setDriverClassName(driveName);
                 hikariDataSource = new HikariDataSource(hikariConfig);
                 return hikariDataSource;

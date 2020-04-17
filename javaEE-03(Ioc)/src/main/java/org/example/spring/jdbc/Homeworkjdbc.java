@@ -1,8 +1,8 @@
 package org.example.spring.jdbc;
 
 import org.example.spring.model.Homework;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,8 +19,6 @@ public class Homeworkjdbc {
 
     private static String driveName = "com.mysql.cj.jdbc.Driver";
 
-    @Autowired
-    private Homework hm;
 
     /**
      * 查询添加的作业
@@ -39,6 +37,7 @@ public class Homeworkjdbc {
             try(Statement statement = connection.createStatement()){
                 try(ResultSet rs = statement.executeQuery(sqlString)){
                    while(rs.next()){
+                       Homework hm = new Homework();
                        hm.setId(rs.getLong("id"));
                        hm.setTitle(rs.getString("title"));
                        hm.setContent(rs.getString("content"));

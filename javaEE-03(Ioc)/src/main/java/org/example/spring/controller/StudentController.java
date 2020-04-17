@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author rice
@@ -18,17 +20,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/student/")
 public class StudentController {
 
-    @Autowired
-    private Student s;
+
     @Autowired
     Studentjdbc studentjdbc;
 
-    @PostMapping("add")
-    public void addStudent(@RequestParam("id") Long studentId,
+    @RequestMapping(value="add")
+    public ModelAndView addStudent(@RequestParam("id") Long studentId,
                            @RequestParam("name") String studentName){
+        Student s = new Student();
         s.setId(studentId);
         s.setName(studentName);
-        studentjdbc.addStudent(s);
+        ModelAndView mav = new ModelAndView("/success.jsp");
+        if(studentjdbc.addStudent(s)){
+            return mav;
+        }
+        else{
+            mav.setViewName("/fail.jsp");
+            return mav;
+        }
     }
 
 }

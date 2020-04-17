@@ -17,12 +17,7 @@ import java.util.List;
 
 @Configuration
 public class Studentjdbc {
-
     private static String driveName = "com.mysql.cj.jdbc.Driver";
-
-    @Autowired
-    private Student s;
-
 
     /**
      *
@@ -43,6 +38,7 @@ public class Studentjdbc {
             try(Statement statement = connection.createStatement()){
                 try(ResultSet resultSet = statement.executeQuery(sqlString)){
                     while(resultSet.next()){
+                        Student s = new Student();
                         s.setId(resultSet.getLong("id"));
                         s.setName(resultSet.getString("name"));
                         s.setCreateTime(resultSet.getTimestamp("create_time"));

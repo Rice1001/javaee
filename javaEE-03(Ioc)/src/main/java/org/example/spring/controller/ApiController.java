@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ApiController {
 
-    @RequestMapping("/addTo")
+    @RequestMapping("/add")
     public String jumpToAdd(){
         return "/add.jsp";
     }
@@ -29,7 +29,6 @@ public class ApiController {
 
     @RequestMapping("/first")
     public String testMain(){
-
         return "/main.jsp";
     }
 

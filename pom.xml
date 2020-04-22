@@ -12,6 +12,8 @@
         <module>javaEE-01</module>
         <module>javaEE-SpringMVC</module>
         <module>javaEE-03(Ioc)</module>
+        <module>javaEE-00</module>
+        <module>javaEE-04(Aop)</module>
     </modules>
 
     <dependencyManagement>

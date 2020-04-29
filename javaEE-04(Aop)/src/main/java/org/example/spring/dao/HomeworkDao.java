@@ -13,15 +13,15 @@ public interface HomeworkDao {
 
     /**
      *
-     * 添加一个数据对象
-     * @param hm 被添加的数据对象
-     * @return 返回查询状态
+     * 往homework表中插入一个数据项
+     * @param hm 被添加的数据项
+     * @return 查询成功 返回 true，失败返回 false
      */
-    public Boolean addHomework(Homework hm);
+    public Boolean doAdd(Homework hm);
 
     /**
-     * c查询所有结果
-     * @return 返回查询对象
+     * 查询s_homework表中所有的数据项
+     * @return 返回查询查询到的数据项
      */
-    public List<Homework> selectAll();
+    public List<Homework> findAll();
 }

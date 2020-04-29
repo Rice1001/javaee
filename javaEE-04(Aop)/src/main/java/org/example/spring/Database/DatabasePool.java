@@ -1,4 +1,4 @@
-package org.example.spring.service;
+package org.example.spring.Database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -19,7 +19,7 @@ public class DatabasePool {
 
         synchronized (DatabasePool.class){
             if(null == hikariDataSource){
-                String jdbcUrl = "jdbc:mysql://127.0.0.1:3306/school?useUnicode=true&characterEncoding=utf8&useSSL=false";
+                String jdbcUrl = "jdbc:mysql://127.0.0.1:3306/school?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true";
                 String driveName = "com.mysql.cj.jdbc.Driver";
                 HikariConfig hikariConfig = new HikariConfig();
                 hikariConfig.setUsername("root");

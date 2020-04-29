@@ -13,16 +13,16 @@ public interface StudentHomeworkDao {
 
     /**
      *
-     * 添加一个数据对象
-     * @param studentHomework 被添加的对象
-     * @return 返回查询状态
+     * 往s_studentHomework表中添加一个数据项
+     * @param studentHomework 被添加的数据项
+     * @return 添加成功，返回true；添加失败，返回false
      */
-    public Boolean addStudentHomework(StudentHomework studentHomework);
+    public Boolean doAdd(StudentHomework studentHomework);
 
     /**
      *
-     * 查询所有数据对象
-     * @return 返回查询对象
+     * 查询s_studentHomework表中所有的数据项
+     * @return 返回查询的数据项
      */
     public List<StudentHomework> selectAll();
 }

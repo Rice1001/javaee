@@ -17,7 +17,7 @@ public interface HomeworkService {
      * @param hm added data item
      * @return add successful, return true; else,return false
      */
-    public Boolean doAdd(Homework hm);
+    public Boolean addHomework(Homework hm);
 
     /**
      *

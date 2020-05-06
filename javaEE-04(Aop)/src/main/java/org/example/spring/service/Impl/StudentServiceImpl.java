@@ -1,9 +1,10 @@
 package org.example.spring.service.Impl;
 
 import org.example.spring.Database.DatabasePool;
-import org.example.spring.dao.factory.DaoFactory;
+import org.example.spring.dao.Impl.StudentDaoImp;
 import org.example.spring.model.Student;
 import org.example.spring.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,10 +17,13 @@ import java.util.List;
 @Component
 public class StudentServiceImpl implements StudentService {
 
+    @Autowired
+    StudentDaoImp studentDaoImp;
     @Override
     public Boolean insert(Student s) {
         try{
-            return DaoFactory.getStudentDaoInstance(DatabasePool.getHikariDataSource().getConnection()).doAdd(s);
+            studentDaoImp.setConnection(DatabasePool.getHikariDataSource().getConnection());
+            return studentDaoImp.doAdd(s);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -29,7 +33,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> selectAll() {
         try{
-            return DaoFactory.getStudentDaoInstance(DatabasePool.getHikariDataSource().getConnection()).findAll();
+            studentDaoImp.setConnection(DatabasePool.getHikariDataSource().getConnection());
+            return studentDaoImp.findAll();
         }catch (Exception e){
             e.printStackTrace();
         }

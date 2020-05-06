@@ -3,6 +3,7 @@ package org.example.spring.dao.Impl;
 import org.example.spring.dao.StudentDao;
 import org.example.spring.model.Student;
 import org.example.spring.Database.DatabasePool;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,13 +14,23 @@ import java.util.List;
  * @version 1.0
  * @date 2020/4/22 22:53
  */
+@Component
 public class StudentDaoImp implements StudentDao {
 
     private Connection connection;
 
-    public StudentDaoImp(Connection connection){
+    /**
+     *
+     * 初始化connection
+     * @param connection
+     */
+    public void setConnection(Connection connection){
         this.connection = connection;
     }
+
+    /*public StudentDaoImp(Connection connection){
+        this.connection = connection;
+    }*/
 
     @Override
     public Boolean doAdd(Student s){

@@ -30,7 +30,7 @@ public class StudentController {
         Student s = new Student();
         s.setId(studentId);
         s.setName(studentName);
-        ModelAndView mav = new ModelAndView("/success.jsp");
+        ModelAndView mav = new ModelAndView("/successful.jsp");
         if(studentjdbc.addStudent(s)){
             return mav;
         }

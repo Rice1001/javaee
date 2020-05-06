@@ -3,6 +3,8 @@ package org.example.spring.dao.Impl;
 import org.example.spring.dao.HomeworkDao;
 import org.example.spring.model.Homework;
 import org.example.spring.Database.DatabasePool;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,10 +15,18 @@ import java.util.List;
  * @version 1.0
  * @date 2020/4/22 23:01
  */
+
+@Component
 public class HomeworkDaoImp implements HomeworkDao {
     private Connection connection;
 
-    public HomeworkDaoImp(Connection connection){
+
+    /**
+     *
+     * 初始化connection
+     * @param connection
+     */
+    public void setConnection(Connection connection){
         this.connection = connection;
     }
     @Override

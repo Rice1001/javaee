@@ -3,6 +3,7 @@ package org.example.spring.dao.Impl;
 import org.example.spring.dao.StudentHomeworkDao;
 import org.example.spring.model.StudentHomework;
 import org.example.spring.Database.DatabasePool;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,13 +14,25 @@ import java.util.List;
  * @version 1.0
  * @date 2020/4/22 23:01
  */
+@Component
 public class StudentHomeworkDaoImp implements StudentHomeworkDao {
 
     private Connection connection;
 
+    /**
+     *
+     * 初始化connection
+     * @param connection
+     */
+    public void setConnection(Connection connection){
+        this.connection = connection;
+    }
+
+/*
     public StudentHomeworkDaoImp(Connection connection){
         this.connection = connection;
     }
+*/
     @Override
     public Boolean doAdd(StudentHomework sh) {
         String sqlString = "insert into s_student_homework" +

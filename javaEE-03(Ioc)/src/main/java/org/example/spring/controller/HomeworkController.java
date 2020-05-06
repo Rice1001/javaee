@@ -34,8 +34,10 @@ public class HomeworkController {
         hm.setContent(hmContent);
         hm.setTitle(hmTitle);
         ModelAndView mav = new ModelAndView("/success.jsp");
-        if(homeworkjdbc.addHomework(hm))
+        if(homeworkjdbc.addHomework(hm)){
             return mav;
+
+        }
         else{
             mav.setViewName("/fail.jsp");
             return mav;

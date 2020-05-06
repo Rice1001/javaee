@@ -17,7 +17,7 @@ public interface StudentHomeworkService {
      * @param sh added data item
      * @return add successfully. return true;else,return false;
      */
-    public boolean doAdd(StudentHomework sh);
+    public boolean insert(StudentHomework sh);
 
 
     /**
